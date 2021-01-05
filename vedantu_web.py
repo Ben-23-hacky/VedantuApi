@@ -136,50 +136,36 @@ import time
 def on_message(ws, message):
 	if message == '3probe':
 		print('Success')
-	elif message != '3':
-		try:
+	elif mes
 			message = message[message.find('['):]
 			m = json.loads(message)
 			mm = m[1]
-			getType = mm['type']
+			getType = mm['
 			if getType == 'STATUS':
 				try:
-					qd = mm['metadata']
-					qi = qd['current_question_index']
+					qd = mm['mqi = qd['current_question_index']
 					qno = int(qi) + 1
-					tq = qd['questions_count']
-				except:
-					print('Show not on')
-			elif getType == 'QUESTION':
-				global question
-				question = mm['body']['newText']
+					tq = qd['questions_count					print('Show not on')
+			elif getType == 'QUESTION' = mm['body']['newText']
 				options = []
-				order = []
-				for i in mm['options']:
+				order = n mm['options']:
 					options.append(i)
-				opt1 = f'{options[0]}'
-				opt2 = f'{options[1]}'
+				opt1 = f'{opti f'{options[1]}'
 				opt3 = f'{options[2]}'
-				for j in mm['optionOrder']:
-					order.append(j)
+				for j in mm[end(j)
 				or1 = f'{order[0]}'
 				or2 = f'{order[1]}'
-				or3 = f'{order[2]}'
-				rq = str(question).replace(' ','+')
-				gq ="https://google.com/search?q="+rq
-				if "not" in question:					
-					embed = Embed(title=f'**Quiz Question [Not Question]**', description=f'[{question}]({gq})', color=0xFF6310)
+			= f'{order[2]}'
+		(' ','+')
+				gq ="https://google.com/search?q="+					embed = Embed(f'*tion [Not Question]**', description=f'[{question}]({gq})', color=0xFF6310)
 					embed.add_field(name='**Option 1**', value=f'[{opt1}]({gq})')
-					embed.add_field(name='**Option 2**', value=f'[{opt2}]({gq})')
+					embed.add_field(name2**', value=f'[{opt2}]({gq})')
 					embed.add_field(name='**Option 3**', value=f'[{opt3}]({gq})')
-					embed.set_footer(text="Vedantu Quiz | Made By Shivam#0123")
+					embed.set_footer(text="Ved| Made By Shivam#0123")
 					hook.send(embed=embed)
 				else:
-					embed = Embed(title=f'**Quiz Question**', description=f'[{question}]({gq})', color=0xFF6310)
-					embed.add_field(name='**Option 1**', value=f'[{opt1}]({gq})')
-					embed.add_field(name='**Option 2**', value=f'[{opt2}]({gq})')
-					embed.add_field(name='**Option 3**', value=f'[{opt3}]({gq})')
-					embed.set_footer(text="Vedantu Quiz | Made By Shivam#0123")
+					embed = Embed(title=f'**Quiz Question**', description=f'[{question}]({gq})', color=0xF				embed.add_field(name='**Option 2**', value=f'[{opt2}]({gq})')
+					embed.add_field(name='* Shivam#0123")
 					hook.send(embed=embed)
 				r = requests.get('http://www.google.com/search?q=' + question)
 				res = str(r.text)
@@ -188,64 +174,49 @@ def on_message(ws, message):
 				cnop3 = res.count(opt3)
 				maxcount = max(cnop1, cnop2, cnop3)
 				mincount = min(cnop1, cnop2, cnop3)
-				if "not" in question:
-					if cnop1 == mincount:
-						embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}**\n**2.{opt2} : {cnop2}** \n**3.{opt3} : {cnop3}**", color=0xFF6310)
+				if "not" in question:__Google Results!__", description=f"**1.{opt1} : {cnop1}**\n**2.{opt2} : {cnop2}** \n**3.{opt3} : {cnop3}**", color=0xFF6310)
 						hook.send(embed=embed)
+						hoo('h')
+				e.sleep(8)
+						hook.send(embed=tm)
+		embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}** \n**2.{opt2} : {cnop2}**\n**3.{opt3} : {cnop3}**", color=0xFF6310)
+						hoosend(embed=embed)
 						hook.send('h')
 						time.sleep(8)
-						tm = Embed(title="**⏰ | Times Up!**",color=0x00F4FF)
-						hook.send(embed=tm)
-					elif cnop2 == mincount:
-						embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}** \n**2.{opt2} : {cnop2}**\n**3.{opt3} : {cnop3}**", color=0xFF6310)
+						tm = Embed(title="*			embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}**\n**2.{opt2} : {cnop2}**\n**3.{opt3} : {cnop3}**", color=0xFF6310)
 						hook.send(embed=embed)
-						hook.send('h')
+		d('h')
 						time.sleep(8)
 						tm = Embed(title="**⏰ | Times Up!**",color=0x00F4FF)
-						hook.send(embed=tm)
-					else:
-						embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}**\n**2.{opt2} : {cnop2}**\n**3.{opt3} : {cnop3}**", color=0xFF6310)
-						hook.send(embed=embed)
-						hook.send('h')
-						time.sleep(8)
-						tm = Embed(title="**⏰ | Times Up!**",color=0x00F4FF)
-						hook.send(embed=tm)
+	
 				else:
 					if cnop1 == maxcount:
 						embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}**\n**2.{opt2} : {cnop2}**\n**3.{opt3} : {cnop3}**", color=0xFF6310)
 						hook.send(embed=embed)
-						hook.send('h')
-						time.sleep(8)
-						tm = Embed(title="**⏰ | Times Up!**",color=0x00F4FF)
+		.send('						tm = Embed(title="**⏰ | Times Up!**",color=0x00F4FF)
 						hook.send(embed=tm)
 					elif cnop2 == maxcount:
 						embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}**\n**2.{opt2} : {cnop2}**\n**3.{opt3} : {cnop3}**", color=0xFF6310)
-						hook.send(embed=embed)
+						hook.sendembed)
 						hook.send('h')
-						time.sleep(8)
-						tm = Embed(title="**⏰ | Times Up!**",color=0x00F4FF)
-						hook.send(embed=tm)
-					else:
+						timesleep(8)
+						tm = Embed(titl | Times Up!**",color=0x00F4FF)
+						hook.send(em
 						embed = Embed(title="__Google Results!__", description=f"**1.{opt1} : {cnop1}**\n**2.{opt2} : {cnop2}**\n**3.{opt3} : {cnop3}**", color=0xFF6310)
-						hook.send(embed=embed)
-						hook.send('h')
-						time.sleep(8)
+		time.sleep(8)
 						tm = Embed(title="**⏰ | Times Up!**",color=0x00F4FF)
 						hook.send(embed=tm)
 			elif getType == 'SOLUTION':
 				answer = mm['answer']
 				ansNum = mm['answerNumber'][0]
 				if ansNum == '1':
-					embed = Embed(title=f"Question Summary", description=f"{question}", color=0x14FB00)
-					embed.add_field(name="**Correct Answer :-**", value=f"Option {ansNum}.{answer}")
+					embed = Embed(title=f"Question ion=f"{question}", color=0x14FB00)
+					embed.add_field(navalue=f"Option {ansNum}.{answer}")
 					hook.send(embed=embed)
 				elif ansNum == '2':
-					embed = Embed(title=f"Question Summary", description=f"{question}", color=0x14FB00)
-					embed.add_field(name="**Correct Answer :-**", value=f"Option {ansNum}.{answer}")
-					hook.send(embed=embed)
-				else:
-					embed = Embed(title=f"Question Summary", description=f"{question}", color=0x14FB00)
-					embed.add_field(name="**Correct Answer :-**", value=f"Option {ansNum}.{answer}")
+					embed = Embed(title=f"Question Sion=f"{question}", color=0x14FB00)
+					embed.add_field(name="**Correct Answer :-**
+					embed = Embed(title=f"Question Summary", description=f"{question}", color=_field(name="**Correct Answer :-**", value=f"Option {ansNum}.{answer}")
 					hook.send(embed=embed)
 			elif getType == 'WINNER':
 				tw = mm['winnerCount']
@@ -257,10 +228,7 @@ def on_message(ws, message):
 		except:
 			print(message)
 
-def on_error(ws, error):
-	print('Error')
-
-def on_close(ws):
+def on_error(
 	print('Closed')
 
 def on_open(ws):
@@ -269,9 +237,7 @@ def on_open(ws):
 		ws.send('5')
 		while True:
 			try:
-				time.sleep(15)
-				ws.send('2')
-			except:
+				texcept:
 				print('Unable to connect With Socket..')
 				break
 		time.sleep(1)
@@ -286,8 +252,4 @@ if __name__ == "__main__":
 		                        on_message = on_message,
 		                        on_error= on_error,
 		                        on_close = on_close,
-		                        cookie = c1,
-		                        header = header)
-
-	ws.on_open = on_open
-	ws.run_forever()
+		                
